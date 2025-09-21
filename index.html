@@ -486,8 +486,12 @@
     </div>
     
     <script>
-        // Set current date as default
-        document.getElementById('date').value = new Date().toISOString().split('T')[0];
+  document.addEventListener("DOMContentLoaded", function () {
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+      dateInput.value = new Date().toISOString().split('T')[0];
+    }
+  });
         
         // Finance tips array
         const financeTips = [
