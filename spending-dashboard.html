@@ -714,7 +714,65 @@ function formatCurrency(amount) {
             // Uncomment this when you have an actual Lambda URL
             initDashboard();
         });
-            
+
+function useMockData() {
+    const formatINR = amount => new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR',
+        minimumFractionDigits: 2
+    }).format(amount);
+
+    const mockData = {
+        spending_data: {
+            "2025-08-01": formatINR(45.67),
+            "2025-08-02": formatINR(23.45),
+            "2025-08-03": formatINR(67.89),
+            "2025-08-04": formatINR(12.34),
+            "2025-09-01": formatINR(34.56),
+            "2025-09-02": formatINR(56.78),
+            "2025-09-03": formatINR(89.01),
+            "2025-09-04": formatINR(23.45),
+            "2025-09-05": formatINR(67.89)
+        },
+        highest_spent_item: {
+            item: "New Laptop",
+            amount: formatINR(899.99)
+        },
+        top_5_items: [
+            { item: "New Laptop", amount: formatINR(899.99) },
+            { item: "Groceries", amount: formatINR(156.78) },
+            { item: "Dining Out", amount: formatINR(123.45) },
+            { item: "Utilities", amount: formatINR(98.76) },
+            { item: "Gas", amount: formatINR(45.67) }
+        ],
+        monthly_spending: {
+            "2025-08": formatINR(987.65),
+            "2025-09": formatINR(1567.89)
+        },
+        projected_cost: formatINR(1800.45),
+        current_budget: formatINR(2000),
+        budget_remaining: formatINR(432.11),
+        budget_percentage: 78.4,
+        highest_spending_category: {
+            category: "Shopping",
+            amount: formatINR(1023.45)
+        },
+        category_breakdown: [
+            { category: "Shopping", amount: formatINR(1023.45) },
+            { category: "Food & Dining", amount: formatINR(567.89) },
+            { category: "Transportation", amount: formatINR(234.56) },
+            { category: "Entertainment", amount: formatINR(123.45) },
+            { category: "Utilities", amount: formatINR(345.67) },
+            { category: "Other", amount: formatINR(89.01) }
+        ],
+        spending_trend: "steady",
+        daily_spending_rate: formatINR(45.67),
+        total_spent: formatINR(3567.89)
+    };
+
+    return mockData;
+}
+        
             // Hide loading indicator and show dashboard content
             document.getElementById('loadingIndicator').style.display = 'none';
             document.getElementById('dashboardContent').style.display = 'block';
